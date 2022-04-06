@@ -15,7 +15,7 @@ const Header: FunctionComponent<Props> = (props) => {
   };
   return (
     <div className="flex w-full my-10 justify-between items-center px-3">
-      {modal && <Modal setModal={toggleModal} />}
+      {modal && <Modal toggleModal={toggleModal} modal={modal} />}
       <div>
         <img className="h-7" src={Logo} alt="logo" />
       </div>
