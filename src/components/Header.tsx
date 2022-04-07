@@ -19,7 +19,7 @@ const Header: FunctionComponent<Props> = (props) => {
       <div>
         <img data-testid="logo" className="h-7" src={Logo} alt="logo" />
       </div>
-      <div className="flex items-center" onClick={toggleModal}>
+      <div data-testid = "search-field" className="flex items-center" onClick={toggleModal}>
         <span className="shadow p-3 rounded-l-2xl w-[250px] pl-5">
           Helsinki Finland
         </span>

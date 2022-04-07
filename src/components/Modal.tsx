@@ -12,19 +12,19 @@ const Modal: FunctionComponent<Props> = ({ toggleModal, modal }) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const checkIfClickOutide = (event: MouseEvent) => {
-      if (modal && ref.current && !ref.current.contains(event.target)) {
+      if (modal && ref.current && !ref.current.contains(event.target as Node)) {
         toggleModal();
       }
     };
     document.addEventListener("mousedown", checkIfClickOutide);
 
     return () => {
-      document.removeEventListener("mousdown", checkIfClickOutide);
+      document.removeEventListener("mousedown", checkIfClickOutide)
     };
   }, [modal]);
 
   return (
-    <div className="absolute top-0 left-0 w-full h-screen bg-gray-300 bg-opacity-50">
+    <div data-testid="modal" className="absolute top-0 left-0 w-full h-screen bg-gray-300 bg-opacity-50">
       <div
         className="absolute top-0 left-0 w-full bg-white h-[460px] rounded-t-2xl"
         ref={ref}

@@ -10,7 +10,9 @@ const Result: FunctionComponent<Props> = (props) => {
   return (
     <div className="flex flex-wrap">
       {data.map((d, i) => {
-        return <Card key={i} res={d} />;
+
+        return<div data-testid={`card-${i}`} key={i}>
+          <Card res={d} /> </div>;
       })}
     </div>
   );

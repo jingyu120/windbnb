@@ -1,29 +1,27 @@
 import React from "react"
-import {render, screen} from "@testing-library/react";
+import {fireEvent, render, screen} from "@testing-library/react";
 import Header from "../Header";
 
 describe("Header", () => {
-    beforeEach(() => {
+    test("elements are displayed", () => {
         render(<Header />)
-    })
-    test("test helsinki", () => {
         const helsinkiElement = screen.getByText(/Helsinki/i);
-
         expect(helsinkiElement).toBeInTheDocument()
-    })
-    test("test add guest displayed", () => {
         const addGuestText = screen.getByText(/Add guests/i);
-
         expect(addGuestText).toBeInTheDocument()
-    })
-    test("test logo img displayed", () => {
         const logoElement = screen.getByTestId("logo")
-
         expect(logoElement).toBeInTheDocument()
-    })
-    test("test search icon displayed", () => {
         const searchIconElement = screen.getByTestId("search-icon")
-
         expect(searchIconElement).toBeInTheDocument()
+    })
+    test("modal display", () => {
+        render(<Header />)
+        const searchElement = screen.getByTestId("search-field")
+        let modalElement = screen.queryByTestId("modal")
+        expect(modalElement).toBe(null)
+        fireEvent.click(searchElement)
+        modalElement = screen.queryByTestId("modal")
+        expect(modalElement).toBeInTheDocument()
+
     })
 })
